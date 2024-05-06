@@ -1,0 +1,22 @@
+.rodape {
+    background-color: #181818;
+    color: #9B9D9E;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    height: 40px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .conteudo {
+    padding: 20px;
+    /* Adjust margin-bottom to leave space for the fixed footer */
+    margin-bottom: 60px; /* You can adjust this value based on your footer height */
+  }
