@@ -42,7 +42,7 @@ if($acao == "excluir"){
 
 if($acao == "atualizar"){
   echo "<script>window.alert('Cadastro atualizado')</script>";
-  $sql = "UPDATE papelaria SET status='".$status."', preco='".$preco."' WHERE codigo=".$id;
+  $sql = "UPDATE papelaria SET status='".$status."', preco='".$preco."' WHERE codigo=".$id; //TALVEZ O STATUS NÃO FUNCIONE, TENHA QUE TROCAR POR STATUS1, A PALAVRA STATUS É IDENTIFICADA COMO UM COMANDO PORTANTO NÃO IRÁ IDENTIFICAR COMO VARIAVEL
   $conn->exec($sql);
   $codigo = 0;
   $status = "";
@@ -52,7 +52,7 @@ if($acao == "atualizar"){
 
 if($acao == "novo" && $codigo == 0 && $status != ""){
   echo "<script>window.alert('Salvo com sucesso')</script>";
-  $sql = "INSERT INTO papelaria (nome, email, senha) VALUES ('".$nome."','".$email."','".$senha."')";
+  $sql = "INSERT INTO papelaria (status, email, senha) VALUES ('".$nome."','".$email."','".$senha."')";
   $conn->exec($sql);
   $codigo = 0;
   $status = "";
