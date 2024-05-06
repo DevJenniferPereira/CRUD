@@ -22,7 +22,8 @@
     
     
 <main class="form-signin w-100 m-auto">
-  <form action="validarlogin.php" method="post">
+
+    <form action="validarlogin.php" method="POST">
     <img class="mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Faça seu login</h1>
 
@@ -37,7 +38,7 @@
 
     <div class="checkbox mb-3">
       <label>
-        <a href="cadastrousuario.php">Cadastre-se</a>
+        <a href="cadastrousuario.php">Cadastrar</a>
       </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Acesso</button>

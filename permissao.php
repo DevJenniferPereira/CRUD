@@ -1,10 +1,28 @@
 <?php
   require_once "topo.php";
-  session_start();
-  if(isset($_SESSION['idUsuario']) 
-  && $_SESSION['idUsuario']<>0) { //se login ok
-    echo "</p>Você está logado como: "
-    .$_SESSION['nomeUsuario'];
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>SIS COmpletão - Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+
+  </head>
+
+  
+<body class="text-center">
+  <?php
     //verificar a variavel ação
     $acao="";
     if(isset($_GET['acao'])){
@@ -63,6 +81,7 @@
       JOIN tbmodulos ON tbpermissoes.idmodulo = tbmodulos.id 
       JOIN tbusuarios ON tbpermissoes.idusuario = tbusuarios.id 
       WHERE tbpermissoes.id = $id";
+      $sql3 = "SELECT * FROM tbusuarios ORDER BY nome";
       $resultado = $conn->query($sql);
       foreach($resultado as $registro) {
         $idmodulo = $registro['modulo_descricao']; // nomes da tabela
@@ -216,11 +235,7 @@
     </div>
   </form>
 </main>
-<?php 
-} //fim do if que verificar se o usuário está logado
-else{
-  echo "<p>Você não possui permissão para acessar esta
-  página, verifique seu login</p>";
-}
+      
+<?php
 require_once "rodape.php";
 ?>

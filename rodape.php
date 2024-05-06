@@ -3,5 +3,5 @@
 </head>
 
 <footer class="rodape">
-  <p>&copy; 2024 - Sabrina Silva</p>
+  <p>&copy; 2024 - Feito com ♥ por Jennifer Pereira</p>
 </footer>

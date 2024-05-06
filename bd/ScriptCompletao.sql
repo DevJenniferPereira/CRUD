@@ -1,3 +1,17 @@
+CREATE database prova
+
+
+CREATE TABLE papelaria
+(
+codigo int NOT NULL auto_increment,
+status int NOT NULL,
+preco int NOT NULL,
+PRIMARY key (codigo)
+)
+
+
+
+
 create database bdSisCompletao
 
 use bdSisCompletao
@@ -67,19 +81,6 @@ nivel varchar(30)
 )
 
 select * from tbpermissoes 
-
-create table tbCategorias(
-id int not null primary key auto_increment,
-descricao varchar(100) not null
-)
-create table tbProdutos(
-id int not null primary key auto_increment,
-descricao varchar(200) not null,
-quantidade int not null,
-preco decimal(10,2) not null,
-desconto decimal(10,2),
-idCategoria int not null references tbCategorias(id),
-idStatus int not null references tbStatus(id))
 
 
 

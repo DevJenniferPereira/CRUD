@@ -1,23 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
-    <title>SIS COmpletão - Login</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/signin.css" rel="stylesheet">
-
-  </head>
-
-  
-<body class="text-center">
+<html lang="en">
+<head>
+    <!-- Metatags e links para CSS -->
+</head>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">SIS Completão</a>
@@ -62,4 +48,6 @@
     </style>
 </head>
 <body>
-
+    
+</body>
+</html>

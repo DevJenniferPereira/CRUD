@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>SIS COmpletão</title>
+    <title>CRUD </♥></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -93,7 +93,7 @@
 
 
 <main class="w-100 m-auto" style="min-height: 400px;">
-  <form action="cadastrousuario.php" method="post">
+  <form action="cadusuario.php" method="post">
     <div class="container justify-content-center">
       <div class="left">
         <h1 class="h4 mb-3 fw-normal text-center">Cadastre-se</h1>
@@ -141,7 +141,7 @@
 <main class="w-100 m-auto" style="min-height: 100px;">
 <button class="w-100 btn btn-primary" onclick="mostrarListagem()">VER CADASTROS</button>
   <div id="listagem" style="display: none;">
-    <form action="cadastrousuario.php" method="post">
+    <form action="cadusuario.php" method="post">
 
         <?php
           $sql="Select * from tbusuarios order by id";
@@ -153,8 +153,8 @@
             $registro["email"]."</td><td>".
             $registro["senha"]."</td><td>
             
-            <a href='cadastrousuario.php?id=".$registro["id"]."&acao=editar'><span class='material-symbols-outlined'>edit</span></a>
-            <a href='cadastrousuario.php?id=".$registro["id"]."&acao=excluir'><span class='material-symbols-outlined'>delete</span></a>
+            <a href='cadusuario.php?id=".$registro["id"]."&acao=editar'><span class='material-symbols-outlined'>edit</span></a>
+            <a href='cadusuario.php?id=".$registro["id"]."&acao=excluir'><span class='material-symbols-outlined'>delete</span></a>
             </td></tr>";
           }
           echo "</table>";
