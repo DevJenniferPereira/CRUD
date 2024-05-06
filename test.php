@@ -6,23 +6,23 @@ require_once "bd/conexao.php";
 $acao = "";
 if(isset($_GET['acao'])) {
     $acao = $_GET['acao'];
-    if(isset($_GET['id']))
-        $id = $_GET['id'];
+    if(isset($_GET['codigo']))
+        $id = $_GET['codigo'];
 } elseif(isset($_POST['acao'])) {
     $acao = $_POST['acao'];
     $id = $_POST['id'];
 }
 
-$codigo =0;
-$status = "";
+$id =0;
+$statuss = "";
 $preco = "";
 
 //acesso ao BD
 if($acao == "editar") {
-    $sql = "select * FROM papelaria where codigo=".$id;
+    $sql = "select * FROM papelaria where id=".$id;
     $resultado = $conn->query($sql);
     foreach($resultado as $registro) {
-        $status = $registro['status'];
+        $statuss = $registro['statuss'];
         $preco = $registro['preco'];
     }
 }
@@ -36,17 +36,29 @@ if($acao == "excluir") {
 
 if($acao == "atualizar") {
     echo "<script>window.alert('Cadastro atualizado')</script>";
-    $sql = "update papelaria set status='".$status."', preco='".$preco."' where codigo=".$id;
+    $sql = "update papelaria set statuss='".$statuss."', preco='".$preco."' where codigo=".$id;
     $conn->exec($sql);
     $acao = "novo";
 }
 
-if($acao == "novo" && $status != "") {
-    echo "<script>window.alert('Salvo com sucesso')</script>";
-    $sql = "insert into papelaria (status, preco) values('".$status."','".$preco."')";
-    $conn->exec($sql);
+if($acao == "novo") {
+    // Verifica se a conexão é válida
+    if($conn) {
+        // Prepara a consulta SQL com Prepared Statements
+        $sql = "INSERT INTO papelaria (statuss, preco) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        // Executa a consulta passando os valores como parâmetros
+        if($stmt->execute([$statuss, $preco])) {
+            echo "<script>window.alert('Salvo com sucesso')</script>";
+        } else {
+            echo "<script>window.alert('Erro ao salvar os dados')</script>";
+        }
+    } else {
+        echo "<script>window.alert('Erro na conexão com o banco de dados')</script>";
+    }
     $acao = "novo";
 }
+
 
 ?>
 
@@ -67,30 +79,30 @@ if($acao == "novo" && $status != "") {
 </head>
 <body class="text-center">
 <main class="w-100 m-auto" style="min-height: 400px;">
-    <form action="cadastrousuario.php" method="post">
+    <form action="test.php" method="post">
         <div class="container justify-content-center">
             <div class="left">
                 <h1 class="h4 mb-3 fw-normal text-center">Cadastrar</h1>
                 <div class="form-floating">
                     <input type="hidden" name="acao" value="<?php echo $acao;?>">
                     <input type="text" name="id" class="form-control" id="floatingInput" placeholder="ID" readonly
-                           value="<?php echo $codigo; ?>">
-                    <label for="floatingInput">Código</label>
+                           value="<?php echo $id; ?>">
+                    <label for="floatingInput">Codigo</label>
                 </div>
 
                 <div class="form-floating">
-                    <input type="text" name="status" class="form-control" id="floatingInput" placeholder="Status"
-                           value="<?php echo $status; ?>" required>
+                    <input type="text" name="statuss" class="form-control" id="floatingInput" placeholder="statuss"
+                           value="<?php echo $statuss; ?>" required>
                     <label for="floatingInput">Status</label>
                 </div>
 
                 <div class="form-floating">
                     <input type="text" name="preco" class="form-control" id="floatingInput" placeholder="Preço"
-                           value="<?php echo $preco; ?>" required>
+                        value="<?php echo $preco; ?>" required>
                     <label for="floatingInput">Preço</label>
                 </div><br>
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit"><?php echo ($acao == 'novo') ? 'Novo' : strtoupper($acao); ?>Novo</button><br><br>
+                <button class="w-100 btn btn-lg btn-primary" type="submit"><?php echo ($acao == 'novo') ? 'novo' : strtoupper($acao); ?>Salvar</button><br><br>
 
                 <p class="mt-5 mb-3 text-muted">CRUD Jennifer Pereira &copy; 2024</p>
             </div>
@@ -101,17 +113,17 @@ if($acao == "novo" && $status != "") {
 <main class="w-100 m-auto" style="min-height: 100px;">
     <button class="w-100 btn btn-primary" onclick="mostrarListagem()">VER CADASTROS</button>
     <div id="listagem" style="display: none;">
-        <form action="cadastrousuario.php" method="post">
+        <form action="test.php" method="post">
             <?php
             $sql="Select * from papelaria order by codigo";
             echo "<table><tr><th>Código</th><th>Status</th><th>Preço</th><th>Ações</th></tr>";
             $resultado = $conn->query($sql);
             foreach($resultado as $registro) {
                 echo "<tr><td>".$registro["codigo"]."</td><td>".
-                    $registro["status"]."</td><td>".
+                    $registro["statuss"]."</td><td>".
                     $registro["preco"]."</td><td>
-                    <a href='cadastrousuario.php?id=".$registro["codigo"]."&acao=editar'><span class='material-symbols-outlined'>edit</span></a>
-                    <a href='cadastrousuario.php?id=".$registro["codigo"]."&acao=excluir'><span class='material-symbols-outlined'>delete</span></a>
+                    <a href='test.php?id=".$registro["codigo"]."&acao=editar'><span class='material-symbols-outlined'>edit</span></a>
+                    <a href='test.php?id=".$registro["codigo"]."&acao=excluir'><span class='material-symbols-outlined'>delete</span></a>
                     </td></tr>";
             }
             echo "</table>";

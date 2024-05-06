@@ -4,7 +4,7 @@ CREATE database prova
 CREATE TABLE papelaria
 (
 codigo int NOT NULL auto_increment,
-status int NOT NULL,
+statuss int NOT NULL,
 preco int NOT NULL,
 PRIMARY key (codigo)
 )
